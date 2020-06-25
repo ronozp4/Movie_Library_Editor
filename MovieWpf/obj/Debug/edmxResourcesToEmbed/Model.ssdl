@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MoviesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Actors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="YearBorn" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Actresses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="YearBorn" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActressMovies">
+    <Key>
+      <PropertyRef Name="Actress_Id" />
+      <PropertyRef Name="Movie_MovieSerial" />
+    </Key>
+    <Property Name="Actress_Id" Type="int" Nullable="false" />
+    <Property Name="Movie_MovieSerial" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Directors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="GoldenGlobes">
+    <Key>
+      <PropertyRef Name="Year" />
+    </Key>
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="ActorId_Id" Type="int" />
+    <Property Name="ActressId_Id" Type="int" />
+    <Property Name="DirectorId_Id" Type="int" />
+    <Property Name="MovieId_MovieSerial" Type="int" />
+  </EntityType>
+  <EntityType Name="MovieActors">
+    <Key>
+      <PropertyRef Name="Movie_MovieSerial" />
+      <PropertyRef Name="Actor_Id" />
+    </Key>
+    <Property Name="Movie_MovieSerial" Type="int" Nullable="false" />
+    <Property Name="Actor_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Movies">
+    <Key>
+      <PropertyRef Name="MovieSerial" />
+    </Key>
+    <Property Name="MovieSerial" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" />
+    <Property Name="ImdbScore" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DirectorId_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Oscars">
+    <Key>
+      <PropertyRef Name="Year" />
+    </Key>
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="ActorId_Id" Type="int" />
+    <Property Name="ActressId_Id" Type="int" />
+    <Property Name="DirectorId_Id" Type="int" />
+    <Property Name="MovieId_MovieSerial" Type="int" />
+  </EntityType>
+  <Association Name="FK_dbo_ActressMovies_dbo_Actresses_Actress_Id">
+    <End Role="Actresses" Type="Self.Actresses" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ActressMovies" Type="Self.ActressMovies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actresses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActressMovies">
+        <PropertyRef Name="Actress_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ActressMovies_dbo_Movies_Movie_MovieSerial">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ActressMovies" Type="Self.ActressMovies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieSerial" />
+      </Principal>
+      <Dependent Role="ActressMovies">
+        <PropertyRef Name="Movie_MovieSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_GoldenGlobes_dbo_Actors_ActorId_Id">
+    <End Role="Actors" Type="Self.Actors" Multiplicity="0..1" />
+    <End Role="GoldenGlobes" Type="Self.GoldenGlobes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoldenGlobes">
+        <PropertyRef Name="ActorId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_GoldenGlobes_dbo_Actresses_ActressId_Id">
+    <End Role="Actresses" Type="Self.Actresses" Multiplicity="0..1" />
+    <End Role="GoldenGlobes" Type="Self.GoldenGlobes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actresses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoldenGlobes">
+        <PropertyRef Name="ActressId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_GoldenGlobes_dbo_Directors_DirectorId_Id">
+    <End Role="Directors" Type="Self.Directors" Multiplicity="0..1" />
+    <End Role="GoldenGlobes" Type="Self.GoldenGlobes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoldenGlobes">
+        <PropertyRef Name="DirectorId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_GoldenGlobes_dbo_Movies_MovieId_MovieSerial">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+    <End Role="GoldenGlobes" Type="Self.GoldenGlobes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieSerial" />
+      </Principal>
+      <Dependent Role="GoldenGlobes">
+        <PropertyRef Name="MovieId_MovieSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_MovieActors_dbo_Actors_Actor_Id">
+    <End Role="Actors" Type="Self.Actors" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MovieActors" Type="Self.MovieActors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MovieActors">
+        <PropertyRef Name="Actor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_MovieActors_dbo_Movies_Movie_MovieSerial">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MovieActors" Type="Self.MovieActors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieSerial" />
+      </Principal>
+      <Dependent Role="MovieActors">
+        <PropertyRef Name="Movie_MovieSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Movies_dbo_Directors_DirectorId_Id">
+    <End Role="Directors" Type="Self.Directors" Multiplicity="0..1" />
+    <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movies">
+        <PropertyRef Name="DirectorId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Oscars_dbo_Actors_ActorId_Id">
+    <End Role="Actors" Type="Self.Actors" Multiplicity="0..1" />
+    <End Role="Oscars" Type="Self.Oscars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Oscars">
+        <PropertyRef Name="ActorId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Oscars_dbo_Actresses_ActressId_Id">
+    <End Role="Actresses" Type="Self.Actresses" Multiplicity="0..1" />
+    <End Role="Oscars" Type="Self.Oscars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actresses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Oscars">
+        <PropertyRef Name="ActressId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Oscars_dbo_Directors_DirectorId_Id">
+    <End Role="Directors" Type="Self.Directors" Multiplicity="0..1" />
+    <End Role="Oscars" Type="Self.Oscars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Oscars">
+        <PropertyRef Name="DirectorId_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Oscars_dbo_Movies_MovieId_MovieSerial">
+    <End Role="Movies" Type="Self.Movies" Multiplicity="0..1" />
+    <End Role="Oscars" Type="Self.Oscars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movies">
+        <PropertyRef Name="MovieSerial" />
+      </Principal>
+      <Dependent Role="Oscars">
+        <PropertyRef Name="MovieId_MovieSerial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MoviesDBModelStoreContainer">
+    <EntitySet Name="Actors" EntityType="Self.Actors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Actresses" EntityType="Self.Actresses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActressMovies" EntityType="Self.ActressMovies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Directors" EntityType="Self.Directors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoldenGlobes" EntityType="Self.GoldenGlobes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieActors" EntityType="Self.MovieActors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oscars" EntityType="Self.Oscars" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_ActressMovies_dbo_Actresses_Actress_Id" Association="Self.FK_dbo_ActressMovies_dbo_Actresses_Actress_Id">
+      <End Role="Actresses" EntitySet="Actresses" />
+      <End Role="ActressMovies" EntitySet="ActressMovies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ActressMovies_dbo_Movies_Movie_MovieSerial" Association="Self.FK_dbo_ActressMovies_dbo_Movies_Movie_MovieSerial">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="ActressMovies" EntitySet="ActressMovies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_GoldenGlobes_dbo_Actors_ActorId_Id" Association="Self.FK_dbo_GoldenGlobes_dbo_Actors_ActorId_Id">
+      <End Role="Actors" EntitySet="Actors" />
+      <End Role="GoldenGlobes" EntitySet="GoldenGlobes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_GoldenGlobes_dbo_Actresses_ActressId_Id" Association="Self.FK_dbo_GoldenGlobes_dbo_Actresses_ActressId_Id">
+      <End Role="Actresses" EntitySet="Actresses" />
+      <End Role="GoldenGlobes" EntitySet="GoldenGlobes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_GoldenGlobes_dbo_Directors_DirectorId_Id" Association="Self.FK_dbo_GoldenGlobes_dbo_Directors_DirectorId_Id">
+      <End Role="Directors" EntitySet="Directors" />
+      <End Role="GoldenGlobes" EntitySet="GoldenGlobes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_GoldenGlobes_dbo_Movies_MovieId_MovieSerial" Association="Self.FK_dbo_GoldenGlobes_dbo_Movies_MovieId_MovieSerial">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="GoldenGlobes" EntitySet="GoldenGlobes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_MovieActors_dbo_Actors_Actor_Id" Association="Self.FK_dbo_MovieActors_dbo_Actors_Actor_Id">
+      <End Role="Actors" EntitySet="Actors" />
+      <End Role="MovieActors" EntitySet="MovieActors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_MovieActors_dbo_Movies_Movie_MovieSerial" Association="Self.FK_dbo_MovieActors_dbo_Movies_Movie_MovieSerial">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="MovieActors" EntitySet="MovieActors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Movies_dbo_Directors_DirectorId_Id" Association="Self.FK_dbo_Movies_dbo_Directors_DirectorId_Id">
+      <End Role="Directors" EntitySet="Directors" />
+      <End Role="Movies" EntitySet="Movies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Oscars_dbo_Actors_ActorId_Id" Association="Self.FK_dbo_Oscars_dbo_Actors_ActorId_Id">
+      <End Role="Actors" EntitySet="Actors" />
+      <End Role="Oscars" EntitySet="Oscars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Oscars_dbo_Actresses_ActressId_Id" Association="Self.FK_dbo_Oscars_dbo_Actresses_ActressId_Id">
+      <End Role="Actresses" EntitySet="Actresses" />
+      <End Role="Oscars" EntitySet="Oscars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Oscars_dbo_Directors_DirectorId_Id" Association="Self.FK_dbo_Oscars_dbo_Directors_DirectorId_Id">
+      <End Role="Directors" EntitySet="Directors" />
+      <End Role="Oscars" EntitySet="Oscars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Oscars_dbo_Movies_MovieId_MovieSerial" Association="Self.FK_dbo_Oscars_dbo_Movies_MovieId_MovieSerial">
+      <End Role="Movies" EntitySet="Movies" />
+      <End Role="Oscars" EntitySet="Oscars" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
