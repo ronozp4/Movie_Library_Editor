@@ -1,0 +1,36 @@
+﻿<Window x:Class="MovieWpf.AddMovie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieWpf"
+        mc:Ignorable="d"
+  Title="Add Movie" Height="400" Width="300">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Title:" Grid.Row="0" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="0" Height="30" Grid.Column="2" Name="tbTitle"/>
+        <Label Content="Year:" Grid.Row="1" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="1" Height="30" Grid.Column="2" Name="tbYear"/>
+        <Label Content="Serial:" Grid.Row="2" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="2" Height="30" Grid.Column="2" Name="tbSerial"/>
+        <Label Content="Country:" Grid.Row="3" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="3" Height="30" Grid.Column="2" Name="tbCountry"/>
+        <Label Content="IMDB Score:" Grid.Row="4" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="4" Height="30" Grid.Column="2" Name="tbIMDB"/>
+        <Button Content="Add" Grid.Row="6" HorizontalContentAlignment="Center" Click="Button_Click" Grid.ColumnSpan="3" Margin="70,0,71,0" />
+    </Grid>
+</Window>

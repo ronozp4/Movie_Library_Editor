@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b2e085c334944631a63b378862dd66fa" Name="Diagram1">
+        <EntityTypeShape EntityType="MoviesDBModel.Actor" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesDBModel.Actress" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesDBModel.Director" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesDBModel.GoldenGlobe" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesDBModel.Movy" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoviesDBModel.Oscar" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_GoldenGlobes_dbo_Actors_ActorId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_Oscars_dbo_Actors_ActorId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_GoldenGlobes_dbo_Actresses_ActressId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_Oscars_dbo_Actresses_ActressId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_GoldenGlobes_dbo_Directors_DirectorId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_Movies_dbo_Directors_DirectorId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_Oscars_dbo_Directors_DirectorId_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_GoldenGlobes_dbo_Movies_MovieId_MovieSerial" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.FK_dbo_Oscars_dbo_Movies_MovieId_MovieSerial" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.ActressMovies" ManuallyRouted="false" />
+        <AssociationConnector Association="MoviesDBModel.MovieActors" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

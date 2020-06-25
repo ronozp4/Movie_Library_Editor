@@ -1,0 +1,34 @@
+﻿<Window x:Class="MovieWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieWpf"
+        mc:Ignorable="d"
+   Title="Movies" Height="242.395" Width="284.871">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Add">
+                <MenuItem Header="_Movie..." Click="AddMovie_Click" />
+                <MenuItem Header="_Director..." Click="AddDirector_Click" />
+                <MenuItem Header="_Actor..." Click="AddActor_Click" />
+                <MenuItem Header="_Actress..." Click="AddActress_Click" />
+                <MenuItem Header="_Oscar..." Click="AddOscar_Click" />
+                <MenuItem Header="_Golden Globe..." Click="AddGoldenGlobe_Click" />
+                <MenuItem Header="_Movie to Someone..." Click="AddMovieToSomeone_Click" />
+                <MenuItem Header="_Someone to movie..." Click="AddSomeoneToMovie_Click" />
+            </MenuItem>
+            <MenuItem Header="_Show">
+                <MenuItem Header="_Movies..." Click="ShowMovies_Click"/>
+                <MenuItem Header="_Directors..." Click="ShowDirectors_Click"/>
+                <MenuItem Header="_Actors..." Click="ShowActors_Click"/>
+                <MenuItem Header="_Actresses..." Click="ShowActresses_Click"/>
+                <MenuItem Header="_Oscars..." Click="ShowOscars_Click" />
+                <MenuItem Header="_Golden Globes..." Click="ShowGoldenGlobes_Click" />
+                <MenuItem Header="_Movie to actor/director..." Click="ShowMovieToSomeone_Click" />
+                <MenuItem Header="_Actor/director to Movie..." Click="ShowSomeoneToMovie_Click" />
+            </MenuItem>
+        </Menu>
+        <TextBox AcceptsReturn="True" IsReadOnly="True" />
+    </DockPanel>
+</Window>

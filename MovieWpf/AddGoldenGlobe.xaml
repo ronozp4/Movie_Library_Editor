@@ -1,0 +1,43 @@
+﻿<Window x:Class="MovieWpf.AddGoldenGlobe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MovieWpf"
+        mc:Ignorable="d"
+                Title="Add Golden Globe" Height="400" Width="500">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Year:" Grid.Row="0" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="0" Height="30" Grid.Column="1" Name="tbYear"/>
+        <Label Content="Actor FN:" Grid.Row="1" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="1" Height="30" Grid.Column="1" Name="tbActorFN"/>
+        <Label Content="Actor LN:" Grid.Row="1" Height="30"  Grid.Column="3" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="1" Height="30" Grid.Column="4" Name="tbActorLN"/>
+        <Label Content="Actress FN:" Grid.Row="2" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="2" Height="30" Grid.Column="1" Name="tbActressFN"/>
+        <Label Content="Actress LN:" Grid.Row="2" Height="30"  Grid.Column="3" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="2" Height="30" Grid.Column="4" Name="tbActressLN"/>
+        <Label Content="Director FN:" Grid.Row="3" Height="30"  Grid.Column="0" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="3" Height="30" Grid.Column="1" Name="tbDirectorFN"/>
+        <Label Content="Director LN:" Grid.Row="3" Height="30"  Grid.Column="3" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="3" Height="30" Grid.Column="4" Name="tbDirectorLN"/>
+        <Label Content="Movie:" Grid.Row="0" Height="30"  Grid.Column="3" HorizontalContentAlignment="Right"/>
+        <TextBox  Grid.Row="0" Height="30" Grid.Column="4" Name="tbMovie"/>
+        <Button Content="Add" Grid.Row="4" HorizontalContentAlignment="Center" Click="Button_Click" Grid.ColumnSpan="3" Margin="70,0,71,0" Grid.Column="1" />
+    </Grid>
+</Window>
